@@ -1,0 +1,41 @@
+{% extends 'base_address.html' %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'axf/address/css/add_address.css' %}">
+{% endblock %}
+
+{% block ext_js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'axf/address/js/add_address.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" action="{% url 'axf:add_address' %}" onsubmit="return check()">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="receiver_input">收货人</label>
+                <input name="receiver" type="text" class="form-control" id="receiver_input" placeholder="请输入收货人,不能为空">
+            </div>
+            <div class="form-group">
+                <label for="tel_input">联系电话</label>
+                <input name="tel" type="tel" class="form-control" id="tel_input" placeholder="请输入联系电话,不能为空">
+            </div>
+            <div class="form-group">
+                <label for="addresses_input">收货地址</label>
+                <input name="addresses" type="text" class="form-control" id="addresses_input" placeholder="请输入收货地址,不能为空">
+            </div>
+            <div class="form-group">
+                <label for="postcode_input">邮编</label>
+                <input name="postcode" type="number" class="form-control" id="postcode_input" placeholder="请输入邮编">
+            </div>
+
+
+            <button type="submit" class="btn btn-success btn-block">完成</button>
+        </form>
+    </div>
+{% endblock %}

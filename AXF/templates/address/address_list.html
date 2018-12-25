@@ -1,0 +1,37 @@
+{% extends 'base_address.html' %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'axf/address/css/address_list.css' %}">
+{% endblock %}
+
+{% block ext_js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'axf/address/js/address_list.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <button class="btn btn-block btn-success">添加新地址</button>
+        <ol>
+            {% for address in address_list %}
+                <li>
+                    <ul>
+                        <li class="menuList">
+                            <a href="#" addressid="{{ address.id }}">
+                                <p>收货人:  {{ address.a_receiver }}</p>
+                                <p>电话:  {{ address.a_tel }}</p>
+                                <p>地址:  {{ address.a_address }}</p>
+                                <p>邮编:  {{ address.a_postcode }}</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            {% endfor %}
+
+        </ol>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'axf/address/css/address.css' %}">
+{% endblock %}
+
+{% block ext_js %}
+    <script type="text/javascript" src="{% static 'axf/address/js/address.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+    <header>
+        <span>&lt;返回购物车</span><br>
+    </header>
+{% endblock %}
